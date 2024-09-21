@@ -7,5 +7,15 @@ pub struct Args {
     pub word: bool,
 
     #[arg(short, long)]
-    pub line: bool
+    pub line: bool,
+
+    #[arg(short, long)]
+    pub descending: bool,
+
+    #[arg(short, long)]
+    pub input_file: String,
+
+    #[arg(short, long)]
+    pub output_file: String,
+
 }
