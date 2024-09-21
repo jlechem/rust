@@ -16,7 +16,7 @@ impl WordSort {
             lines: Vec::new(),
             input_file: input,
             output_file: output,
-            descending: descending
+            descending
         }
     }
 }
