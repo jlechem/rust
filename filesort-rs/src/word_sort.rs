@@ -1,15 +1,15 @@
 use crate::file_sort::FileSort;
 
-pub struct LineSort {
+pub struct WordSort {
     lines: Vec<String>,
     input_file: String,
     output_file: String,
     descending: bool
 }
 
-impl LineSort {
-    pub fn new( input:String, output:String, descending:bool ) -> LineSort {
-        LineSort {
+impl WordSort {
+    pub fn new( input:String, output:String, descending:bool ) -> WordSort {
+        WordSort {
             lines: Vec::new(),
             input_file: input,
             output_file: output,
@@ -18,13 +18,14 @@ impl LineSort {
     }
 }
 
-impl FileSort for LineSort {
+impl FileSort for WordSort {
     fn read(&mut self) {
         println!("{0}", self.input_file);
     }
 
     fn write(&mut self) {
         println!("{0}", self.output_file);
+
     }
 
     fn sort(&mut self) {
@@ -32,6 +33,6 @@ impl FileSort for LineSort {
             self.lines.sort();
         } else {
             self.lines.sort_by(|a, b| b.cmp(a));  
-        }
+        }  
     }
 }

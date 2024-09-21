@@ -1,5 +1,5 @@
 pub trait FileSort {
-    fn read(&self);
-    fn write(&self);
-    fn sort(&self);
+    fn read(&mut self);
+    fn write(&mut self);
+    fn sort(&mut self);
 }
