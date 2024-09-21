@@ -1,7 +1,7 @@
 use clap::Parser;
 
 #[derive(Parser, Debug)]
-#[command(version, about, long_about = None)]
+#[command(version = "1.0.0", about = "Utility to sort files by word or line in ascending/descending order", long_about = None)]
 pub struct Args {
     #[arg(short, long)]
     pub word: bool,
