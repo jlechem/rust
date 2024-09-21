@@ -1,5 +1,8 @@
 use crate::file_sort::FileSort;
 
+use std::fs::File;
+use std::io::{BufReader, Write};
+
 pub struct WordSort {
     lines: Vec<String>,
     input_file: String,
@@ -20,7 +23,8 @@ impl WordSort {
 
 impl FileSort for WordSort {
     fn read(&mut self) {
-        println!("{0}", self.input_file);
+        let file = File::open(&self.input_file).expect("input file doesn't exist");
+        let buf = BufReader::new(file);
     }
 
     fn write(&mut self) {

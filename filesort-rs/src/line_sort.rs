@@ -1,5 +1,8 @@
 use crate::file_sort::FileSort;
 
+use std::fs::File;
+use std::io::{BufReader, Read};
+
 pub struct LineSort {
     lines: Vec<String>,
     input_file: String,
@@ -20,7 +23,9 @@ impl LineSort {
 
 impl FileSort for LineSort {
     fn read(&mut self) {
-        println!("{0}", self.input_file);
+        let file = File::open(&self.input_file).expect("input file doesn't exist");
+        let buf = BufReader::new(file);
+        
     }
 
     fn write(&mut self) {
