@@ -28,18 +28,29 @@ impl FileSort for WordSort {
         let buffer: BufReader<File> = BufReader::new(file);
         
         for line in buffer.lines() {
-            self.lines.push(line.unwrap_or_default());
-        }
+            let new_line:String = line.unwrap_or_default();
+            
+            if !new_line.is_empty() {
+                let words = new_line.split_whitespace();
+
+                for word in words {
+                    self.lines.push(word.to_string());
+                }
+
+            }
+       }
 
         return Ok(true);
     }
 
-    fn write(&mut self) {
-        let mut file: File = File::create(&self.output_file).expect("Unable to create output file {0}");
+    fn write(&mut self) -> Result<bool,Error>{
+        let mut file: File = File::create(&self.output_file)?;
 
         for line in &self.lines {
-            write!(file,"{}\n", line).expect("Unable to write data to file.")
+            write!(file,"{}\n", line)?;
         }
+
+        return Ok(true);
     }
 
     fn sort(&mut self) {

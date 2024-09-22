@@ -38,12 +38,14 @@ impl FileSort for LineSort {
         return Ok(true);
     }
 
-    fn write(&mut self) {
-       let mut file: File = File::create(&self.output_file).expect("Unable to create output file {0}");
+    fn write(&mut self) -> Result<bool,Error>{
+       let mut file: File = File::create(&self.output_file)?;
 
         for line in &self.lines {
-            write!(file,"{}\n", line).expect("Unable to write data to file.")
+            write!(file,"{}\n", line)?;
         }
+
+        return Ok(true);
     }
 
     fn sort(&mut self) {

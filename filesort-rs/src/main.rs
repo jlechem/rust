@@ -35,7 +35,16 @@ fn main() {
 
             println!("Writing file data\n");
 
-            linesort.write();
+            let result = linesort.write();
+
+            match result {
+                Ok(_res) => { 
+                },
+                Err(e) => { 
+                    eprintln!("An error occured with the output file\n{}", e);
+                    return;
+                }
+            }
 
             println!("Filesort complete\n");
     }
@@ -62,7 +71,16 @@ fn main() {
         
         println!("Writing file data\n");
 
-        wordsort.write();
+        let result = wordsort.write();
+
+        match result {
+            Ok(_res) => { 
+            },
+            Err(e) => { 
+                eprintln!("An error occured with the output file\n{}", e);
+                return;
+            }
+        }
 
         println!("Filesort complete\n");
 
