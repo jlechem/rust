@@ -28,7 +28,11 @@ impl FileSort for LineSort {
         let buffer: BufReader<File> = BufReader::new(file);
         
         for line in buffer.lines() {
-            self.lines.push(line.unwrap_or_default());
+            let new_line:String = line.unwrap_or_default();
+
+            if !new_line.is_empty() {
+                self.lines.push(new_line);
+            }
         }
     }
 
