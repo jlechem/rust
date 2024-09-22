@@ -16,9 +16,18 @@ fn main() {
             let mut linesort: LineSort = LineSort::new(args.input_file, args.output_file, args.descending);
 
             println!("Filesort start\n");
-            println!("Reading file data\n");
+            println!("Reading file data (by Line)\n");
 
-            linesort.read();
+            let result = linesort.read();
+
+            match result {
+                Ok(_res) => { 
+                },
+                Err(e) => { 
+                    eprintln!("An error occured with the input file\n{}", e);
+                    return;
+                }
+            }
             
             println!("Soritng data\n");
             
@@ -33,8 +42,29 @@ fn main() {
     else {
         let mut wordsort: WordSort = WordSort::new(args.input_file, args.output_file, args.descending);
 
-        wordsort.read();
+        println!("Filesort start\n");
+        println!("Reading file data (by Word)\n");
+
+        let result = wordsort.read();
+
+        match result {
+            Ok(_res) => { 
+            },
+            Err(e) => { 
+                eprintln!("An error occured with the input file\n{}", e);
+                return;
+            }
+        }
+
+        println!("Soritng data\n");
+        
         wordsort.sort();
+        
+        println!("Writing file data\n");
+
         wordsort.write();
+
+        println!("Filesort complete\n");
+
     }
 }
