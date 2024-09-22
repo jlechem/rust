@@ -1,7 +1,7 @@
 use crate::file_sort::FileSort;
 
 use std::fs::File;
-use std::io::{BufRead, BufReader, Read, Write};
+use std::io::{BufRead, BufReader, Write};
 
 pub struct LineSort {
     lines: Vec<String>,

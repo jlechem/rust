@@ -1,7 +1,7 @@
 use crate::file_sort::FileSort;
 
 use std::fs::File;
-use std::io::{BufReader, Read, Write};
+use std::io::{BufRead, BufReader, Write};
 
 pub struct WordSort {
     lines: Vec<String>,
@@ -23,11 +23,21 @@ impl WordSort {
 
 impl FileSort for WordSort {
     fn read(&mut self) {
-        println!("{0}", self.input_file);
+        let file = File::open(&self.input_file).expect("input file doesn't exist");
+
+        let buffer: BufReader<File> = BufReader::new(file);
+        
+        for line in buffer.lines() {
+            self.lines.push(line.unwrap_or_default());
+        }
     }
 
     fn write(&mut self) {
-        println!("{0}", self.output_file);
+        let mut file: File = File::create(&self.output_file).expect("Unable to create output file {0}");
+
+        for line in &self.lines {
+            write!(file,"{}\n", line).expect("Unable to write data to file.")
+        }
     }
 
     fn sort(&mut self) {
