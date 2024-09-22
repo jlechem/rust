@@ -36,7 +36,6 @@ impl FileSort for WordSort {
                 for word in words {
                     self.lines.push(word.to_string());
                 }
-
             }
        }
 
