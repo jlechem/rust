@@ -19,7 +19,7 @@
                     "kind": "bin"
                 }
             },
-            "args": ["--input-file","foo.txt","--output-file","out.txt"],
+            "args": ["--input-file","test.txt","--output-file","out.txt"],
             "cwd": "${workspaceFolder}"
         },
         {
