@@ -6,7 +6,7 @@ pub struct Args {
     #[arg(short, long, default_value_t = false)]
     pub word: bool,
 
-    #[arg(short, long, default_value_t = true)]
+    #[arg(short, long, default_value_t = false)]
     pub line: bool,
 
     #[arg(short, long, default_value_t = false)]
